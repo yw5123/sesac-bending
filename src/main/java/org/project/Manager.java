@@ -1,21 +1,17 @@
 package org.project;
 
 public class Manager extends User {
-    private String key;
+    private VendingMachine machine;
 
-    public Manager(String key) {
-        this.key = key;
+    public Manager(VendingMachine machine) {
+        this.machine = machine;
     }
 
-    public void addItems(VendingMachine machine, Product item, int num) {
-        machine.addItems(item, num, key);
+    public void addItems(Product item, int num) {
+        machine.addItems(item, num);
     }
 
-    public void chechkSalse(VendingMachine machine) {
-        int sale = machine.getSales(key);
-
-        if (sale < 0) {
-            System.out.println("열쇠가 일치하지 않습니다.");
-        }
+    public void checkSales() {
+        System.out.printf("지금까지의 매출액은 %d원입니다.\n", machine.getSales());
     }
 }
